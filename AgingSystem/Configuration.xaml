@@ -1,0 +1,197 @@
+﻿<Window xmlns:AgingSystem="clr-namespace:AgingSystem"  x:Class="AgingSystem.Configuration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="老化配置" Height="720" Width="700" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid Name="configGrid" Margin="0" ShowGridLines="False" Background="#FFE4EFFC">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            <ColumnDefinition Width="2.6*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            <ColumnDefinition Width="2.5*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            <ColumnDefinition Width="2.5*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="1.5*"></RowDefinition>
+            <RowDefinition Height="15*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--泵型号-->
+        <Label Name="lbPumpType" Grid.Row="0" Grid.Column="0" Margin="3" Padding="2" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">泵型号</Label>
+        <ComboBox Name="cmPumpType"  Grid.Row="0" Grid.Column="1" Margin="3" Padding="2" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left" Width="110" SelectionChanged="OnSelectionChanged" >
+            <ComboBoxItem>GrasebyC6</ComboBoxItem>
+            <ComboBoxItem>GrasebyC6T</ComboBoxItem>
+            <ComboBoxItem>GrasebyF6</ComboBoxItem>
+            <ComboBoxItem>GrasebyC8</ComboBoxItem>
+            <!--ComboBoxItem>GrasebyF8</-->
+            <ComboBoxItem>Graseby1200</ComboBoxItem>
+            <ComboBoxItem>Graseby1200En</ComboBoxItem>
+            <ComboBoxItem>Graseby2000</ComboBoxItem>
+            <ComboBoxItem>Graseby2100</ComboBoxItem>
+            <ComboBoxItem>WZ50C6</ComboBoxItem>
+            <ComboBoxItem>WZ50C6T</ComboBoxItem>
+            <ComboBoxItem>WZS50F6</ComboBoxItem>
+        </ComboBox>
+
+        <!--速率-->
+        <Label Name="lbRate"    Grid.Row="0" Grid.Column="3" Margin="2" Padding="1" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">速率</Label>
+        <TextBox Name="tbRate"  Grid.Row="0" Grid.Column="4" Margin="2" Padding="1" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" TextChanged="tbRate_TextChanged" KeyDown="tbRate_KeyDown"/>
+        <Label Name="lbUnit"    Grid.Row="0" Grid.Column="5" Margin="2" Padding="1" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">mL/h</Label>
+
+        <!--限制量-->
+        <Label Name="lbVolume"      Grid.Row="0" Grid.Column="6" Margin="2" Padding="1" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">限制量</Label>
+        <TextBox Name="tbVolume"    Grid.Row="0" Grid.Column="7" Margin="2" Padding="1" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" KeyDown="tbVolume_KeyDown" TextChanged="tbVolume_TextChanged" />
+        <Label Name="lbVolumeUnit"  Grid.Row="0" Grid.Column="8" Margin="2" Padding="1" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">mL</Label>
+
+        <!--充电时长-->
+        <Label Name   ="lbOcclusionLevel"  Grid.Row="1" Grid.Column="0" Margin="3" Padding="2" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">压力档位</Label>
+        <ComboBox Name="cmOcclusionLevel"  Grid.Row="1" Grid.Column="1" Margin="3" Padding="2" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left" Width="110" SelectionChanged="OnOcclusionChanged" >
+            <ComboBoxItem>L</ComboBoxItem>
+            <ComboBoxItem>C</ComboBoxItem>
+            <ComboBoxItem>H</ComboBoxItem>
+            <ComboBoxItem>N</ComboBoxItem>
+        </ComboBox>
+        <!--Label Name   ="lbChargeUnit" Grid.Row="1" Grid.Column="2" Margin="3" Padding="2" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">h</-->
+
+        <!--放电时长-->
+        <!--Label Name   ="lbDischarge"     Grid.Row="1" Grid.Column="3" Margin="3" Padding="2" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">放电时长</-->
+        <!--TextBox Name ="tbDischarge"     Grid.Row="1" Grid.Column="4" Margin="3" Padding="2" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" /-->
+        <Label Name   ="lbCharge"     Grid.Row="1" Grid.Column="3" Margin="3" Padding="2" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">充电时长</Label>
+        <TextBox Name ="tbCharge"     Grid.Row="1" Grid.Column="4" Margin="3" Padding="2" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" TextChanged="tbCharge_TextChanged" KeyDown="tbCharge_KeyDown" />
+        <Label Name   ="lbDischargeUnit" Grid.Row="1" Grid.Column="5" Margin="3" Padding="2" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">h</Label>
+
+        <!--补电时长-->
+        <Label Name   ="lbRecharge"     Grid.Row="1" Grid.Column="6" Margin="3" Padding="2" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">补电时长</Label>
+        <TextBox Name ="tbRecharge"     Grid.Row="1" Grid.Column="7" Margin="3" Padding="2" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" KeyDown="tbRecharge_KeyDown" TextChanged="tbRecharge_TextChanged" />
+        <Label Name   ="lbRechargeUnit" Grid.Row="1" Grid.Column="8" Margin="3" Padding="2" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">h</Label>
+
+
+        <!--其他货架区-->
+        <Grid Name="otherDockGrid" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan ="9">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Margin="0" Padding="1" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">将此配置应用于其他货架：</Label>
+            <!--checkbox区-->
+            <Grid Name="otherDockCheckBoxGrid" Grid.Row="1" Grid.Column="0" Margin="0" HorizontalAlignment="Center"  VerticalAlignment="Center">
+            </Grid>
+        </Grid>
+
+        <!--按钮存放区-->
+        <Grid Name="buttonGrid" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan ="9">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Name="btnSelect" Grid.Row="0" Grid.Column="0" Margin="125,8,125,8" Padding="2" FontSize="12" IsEnabled="True" Cursor="Hand" Click="OnSelect">选择参数</Button>
+            <Button Name="btnSave" Grid.Row="0" Grid.Column="1" Margin="125,8,125,8" Padding="2" FontSize="12" IsEnabled="True" Cursor="Hand" Click="OnSave">保存参数</Button>
+        </Grid>
+
+        <!--泵列表-->
+        <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan ="9" Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Name="pumplistGrid" Grid.Row="0" Grid.Column="0" Margin="0">
+                <Grid.Resources>
+                    <Style
+                TargetType="Border">
+                        <Setter
+                    Property="BorderBrush"
+                    Value="LightGray"></Setter>
+                        <Setter
+                    Property="BorderThickness"
+                    Value="1"></Setter>
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Grid.Column="0"></Border>
+                <Border Grid.Column="1"></Border>
+                <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"></Border>
+                <Border Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"></Border>
+                <Border Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2"></Border>
+                <Border Grid.Row="6" Grid.Column="0"  Grid.ColumnSpan="2"></Border>
+                <Border Grid.Row="8" Grid.Column="0"  Grid.ColumnSpan="2"></Border>
+                <Border Grid.Row="10" Grid.Column="0"  Grid.ColumnSpan="2"></Border>
+                <Border Grid.Row="12" Grid.Column="0"  Grid.ColumnSpan="2"></Border>
+                <Border Grid.Row="14" Grid.Column="0"  Grid.ColumnSpan="2"></Border>
+
+                <!--标题栏-->
+                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan ="2" Margin="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Column="0"></Border>
+                    <Border Grid.Column="2"></Border>
+                    <Border Grid.Column="4"></Border>
+                    <Border Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="6"></Border>
+                    <Label Grid.Row="0" Grid.Column="0" Margin="5,1,1,1" Padding="1" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">选择要老化的泵位:</Label>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Width="100" Height="20">
+                        <TextBlock Background="#00A2E8" Width="30" Height="15">
+                        </TextBlock>
+                        货架第一层
+                    </TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Width="100" Height="20">
+                        <TextBlock Background="#99D9EA" Width="30" Height="15">
+                        </TextBlock>
+                        货架第二层
+                    </TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="3" Width="100" Height="20">
+                        <TextBlock Background="#7092BE" Width="30" Height="15">
+                        </TextBlock>
+                        货架第三层
+                    </TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="4" Width="100" Height="20">
+                        <TextBlock Background="#C8BFE7" Width="30" Height="15">
+                        </TextBlock>
+                        货架第四层
+                    </TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="5" Width="100" Height="20">
+                        <TextBlock Background="#2E66BA" Width="30" Height="15">
+                        </TextBlock>
+                        货架第五层
+                    </TextBlock>
+                    <!--泵位\型号\序列号-->
+                    <CheckBox Name="chNo"  Grid.Row="1" Grid.Column="0" Margin="5,1,1,1" Padding="1,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Click="OnSelectAllPump">泵位</CheckBox>
+                    <Label Grid.Row="1" Grid.Column="1" Margin="1" Padding="0" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">型号</Label>
+                    <Label Grid.Row="1" Grid.Column="2" Margin="1" Padding="0" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">序列号</Label>
+                    <Label Grid.Row="1" Grid.Column="3" Margin="5,1,1,1" Padding="0" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">泵位</Label>
+                    <Label Grid.Row="1" Grid.Column="4" Margin="1" Padding="0" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">型号</Label>
+                    <Label Grid.Row="1" Grid.Column="5" Margin="1" Padding="0" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">序列号</Label>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+
+</Window>

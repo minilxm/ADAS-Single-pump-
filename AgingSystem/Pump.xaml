@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="AgingSystem.Pump"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="110" d:DesignWidth="200">
+    <Grid Name="pumpGrid" Margin="0" ShowGridLines="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image Name="pumpImg" Grid.Row="0" Grid.Column="0" Margin="3" Cursor="Hand" Stretch="Fill" MouseLeftButtonDown="pumpImg_MouseLeftButtonDown"></Image>
+        <Image Name="selectedImg" Grid.Row="0" Grid.Column="1" Margin="3" Visibility="Hidden"></Image>
+        <!--存放按钮-->
+        <Grid Name="buttonGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" ShowGridLines="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Name="btnConfig" Grid.Row="0" Grid.Column="0" Margin="3" Padding="5" FontSize="15" IsEnabled="False" Click="btnConfig_Click">配置</Button>
+            <Button Name="btnStart" Grid.Row="0" Grid.Column="1" Margin="3" Padding="5" FontSize="15" IsEnabled="False">开始</Button>
+            <Button Name="btnStop" Grid.Row="0" Grid.Column="2" Margin="3" Padding="5" FontSize="15" IsEnabled="False">停止</Button>
+        </Grid>
+        <Label Name="lbStatus" Grid.Row="2" Grid.Column="0" Margin="3" Padding="5" FontSize="15">正在充电......</Label>
+
+
+    </Grid>
+</UserControl>
